@@ -1,10 +1,14 @@
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from projects.models import Project
 
 # Create your views here.
 
 
-class ProjectListView(ListView):
+class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
     template_name = "projects/list.html"
+
+    def get_query(self):
+        return Project.objects.filter(members=self.request.user)
