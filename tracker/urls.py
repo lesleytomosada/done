@@ -23,6 +23,7 @@ urlpatterns = [
         RedirectView.as_view(url=reverse_lazy("list_project")),
         name="home",
     ),
+    path("accounts/", include("accounts.urls")),
     path("admin/", admin.site.urls),
     path("projects/", include("projects.urls")),
 ]
