@@ -3,8 +3,8 @@
     <main>
         <div>
             <h1>My Tasks</h1>
-            {% if not user.task_list %}<p>You have no tasks</p>{% endif %}
-            {% if user.task_list %}
+            {% if not user.tasks.all %}<p>You have no tasks</p>{% endif %}
+            {% if user.tasks.all %}
                 <table>
                     <thead>
                         <tr>
@@ -13,6 +13,16 @@
                             <th>End date</th>
                             <th>Is completed</th>
                         </tr>
+                        <tbody>
+                            {% for task in user.tasks.all %}
+                                <tr>
+                                    <td>{{ task.name }}</td>
+                                    <td>{{ task.start_date }}</td>
+                                    <td>{{ task.due_date }}</td>
+                                    <td>{{ task.is_completed|yesno:"Done," }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
                     </thead>
                 </table>
             {% endif %}
