@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <main>
+        <div>
+            <h1>My Tasks</h1>
+            {% if not user.task_list %}<p>You have no tasks</p>{% endif %}
+            {% if user.task_list %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Start date</th>
+                            <th>End date</th>
+                            <th>Is completed</th>
+                        </tr>
+                    </thead>
+                </table>
+            {% endif %}
+        </div>
+    </main>
+{% endblock content %}

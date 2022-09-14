@@ -6,7 +6,7 @@
             <div>
                 <a href="{% url "create_project" %}">Create a new project</a>
             </div>
-            {% if not project_list %}
+            {% if not user.projects.all %}
                 <p>You are not assigned to any projects</p>
             {% else %}
                 <table>
