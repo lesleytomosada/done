@@ -34,3 +34,13 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         project = form.save(commit=True)
         return redirect("show_project", pk=project.id)
+
+    def get_context_data(self, **kwargs):
+        markdowntext = open(
+            os.path.join(os.path.dirname(__file__), "templates/test.md")
+        ).read()
+
+        context = super().get_context_data(**kwargs)
+        context["markdowntext"] = markdowntext
+
+        return context
