@@ -3,7 +3,6 @@ from django.test import TestCase, Client
 from django.urls import reverse
 
 from .utils import Document
-from projects.models import Project
 
 
 class FeatureTests(TestCase):
