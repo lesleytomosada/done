@@ -3,6 +3,9 @@
     <main>
         <div>
             <h1>My Projects</h1>
+            <div>
+                <a href="{% url "create_project" %}">Create a new project</a>
+            </div>
             {% if not project_list %}
                 <p>You are not assigned to any projects</p>
             {% else %}
